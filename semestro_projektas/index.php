@@ -1,27 +1,27 @@
 <?php
-	require_once("userClass.php");  /* iterpiams reklaings fails (klase) kuriam yra useriai, be jo negaletumem naudot funkciju zemiau tokiu kaip $Users->get_user_pass(), nes sitam faile aprasyta yr visks */
+	require_once("userClass.php");
 ?>
 <!doctype html>
 <html>
 <head>
-	<link href="style.css" rel="stylesheet"/> <!-- iterpiams stiliaus fails -->
+	<link href="style.css" rel="stylesheet"/>
 </head>
 <body>
 	<div class="login">
-		<h1>Prisijungimas</h1> <!-- heading 1 (didziausias) --> 
+		<h1>Prisijungimas</h1>
 		<?php 
 			
-			if(isset($_POST["submit"])) { /* tikrinama ar paspaustas mygtukas submit turi reiksme, jei jo, tai ir kiti ivedimo laukai tures */
+			if(isset($_POST["submit"])) {
 				
-				if(!empty($_POST["email"]) && !empty($_POST["pass"])){ /* jei netuscias email ir slaptazodis, veiksmas vyksta */
-					$email = $_POST["email"]; /* duomenys gauti is ivedimo laukelio pavadinimu email */
-					$pass = $_POST["pass"]; /* duomenys gauti is ivedimo laukelio pavadinimu pass */
+				if(!empty($_POST["email"]) && !empty($_POST["pass"])){ 
+					$email = $_POST["email"]; 
+					$pass = $_POST["pass"]; 
 					
-					if(password_verify($pass, $Users->get_user_pass($email))) { /* php funkcija, tikrinanti ar ivesto slaptazodzio hash tinka su issaugoto slaptazodzio */
+					if(password_verify($pass, $Users->get_user_pass($email))) { 
 						echo "<div class=\"alert\" id=\"success\">Prisijungta</div>";
 					}
-					else { /* priesingu atveju sitas vyksta */
-						echo "<div class=\"alert\" id=\"error\">Neteisingi duomenys</div>"; /* echo tai tipo spausdint teksta */
+					else { 
+						echo "<div class=\"alert\" id=\"error\">Neteisingi duomenys</div>";
 					}
 					
 				}
